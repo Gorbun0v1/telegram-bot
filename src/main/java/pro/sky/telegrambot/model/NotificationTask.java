@@ -4,17 +4,25 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity(name = "notification_task")
-@Table(name = "notification_task")
 public class NotificationTask {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
     @Column(name = "chat_id")
-    Long chatId;
+    private Long chatId;
     @Column(name = "message")
-    String message;
+    private String message;
     @Column(name = "time")
-    LocalDateTime time;
+    private LocalDateTime time;
+
+    public NotificationTask() {
+    }
+
+    public NotificationTask(Long chatId, String message, LocalDateTime time) {
+        this.chatId = chatId;
+        this.message = message;
+        this.time = time;
+    }
 
     public Long getChatId() {
         return chatId;
@@ -40,12 +48,5 @@ public class NotificationTask {
         this.time = time;
     }
 
-    public NotificationTask() {
-    }
 
-    public NotificationTask(Long chatId, String message, LocalDateTime time) {
-        this.chatId = chatId;
-        this.message = message;
-        this.time = time;
-    }
 }

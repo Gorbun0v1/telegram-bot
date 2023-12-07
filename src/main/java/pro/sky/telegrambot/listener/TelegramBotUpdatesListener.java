@@ -36,11 +36,6 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
 
     @Override
     public int process(List<Update> updates) {
-//        updates.forEach(update -> {
-//            logger.info("Processing update: {}", update);
-//            update.message().text().equals("/start");
-//        });
-
         for (Update update:updates) {
             if (update.message() != null) {
                 if (update.message().text().equals("/start")) {
@@ -68,12 +63,6 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
         SendMessage sendMessage = new SendMessage(chatId, massageText);
         telegramBot.execute(sendMessage);
     }
-    @Scheduled(cron = "0 * * * * *")
-    public void run() {
-        List<NotificationTask> notificationTasks = notificationService.getCurrentNotifications();
-        for (NotificationTask notificationTask:notificationTasks) {
-            sendMassage(notificationTask.getChatId(), notificationTask.getMessage());
-        }
-    }
+
 
 }
