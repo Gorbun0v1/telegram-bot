@@ -25,6 +25,6 @@ public class NotificationService {
     public List<NotificationTask> getCurrentNotifications() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime dateTime = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), now.getHour(), now.getMinute(), 0);
-        notificationRepository.findAllByTime(dateTime);
+        return notificationRepository.findAllByTime(dateTime);
     }
 }
